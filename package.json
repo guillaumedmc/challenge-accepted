@@ -1,5 +1,15 @@
 {
   "name": "challenge-accepted",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^4.2.0",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.4.7",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.9.0"
+  }
 }
