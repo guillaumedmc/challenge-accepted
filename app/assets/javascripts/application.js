@@ -13,3 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require rails-ujs
+//= require moment
+//= require moment/fr.js

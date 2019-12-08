@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_141316) do
+ActiveRecord::Schema.define(version: 2019_12_08_202532) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_141316) do
     t.text "reward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "completion_date"
   end
 
   create_table "users", force: :cascade do |t|

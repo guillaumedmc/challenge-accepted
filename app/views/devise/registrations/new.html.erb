@@ -25,7 +25,7 @@
                 input_html: { autocomplete: "nickename" }%>
 
     <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :photo_cache, as: :hidden, rquired: true, hint: "Max 10mo, select a square picture (for avatar)" %>
 
     <%= f.input :password,
                 required: true,
