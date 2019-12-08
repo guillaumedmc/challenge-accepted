@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'challenge_list', to: 'pages#challenge_list', as: :challenge_list
   get 'pages/list_of_challenges'
   resources :challenges

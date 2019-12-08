@@ -1,14 +1,16 @@
+<h1>Create a new challenge</h1>
+
 <%= link_to "Back to all challenges", challenges_path %>
 
 <%= form_for(@challenge) do |f| %>
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', :required => true %>
   </div>
 
   <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.text_field :description, class: 'form-control', :required => true %>
   </div>
 
   <div class="form-group">
@@ -16,5 +18,5 @@
     <%= f.text_field :reward, class: 'form-control' %>
   </div>
 
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-gradient' %>
 <% end %>

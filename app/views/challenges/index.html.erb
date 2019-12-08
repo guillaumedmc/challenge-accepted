@@ -1,11 +1,22 @@
 <h1>
-  Liste des challenges en cours
+  Challenges list 🚀
 </h1>
 
 <% @challenges.each do |challenge| %>
-  <h2><%= challenge.name %></h2>
-  <p><%= challenge.description %></p>
-  <p><%= challenge.reward %></p>
+<!--   <div class="row">
+    <div class=" col-12 col-lg-4"> -->
+      <div class="card-product">
+        <div class="card-product-infos">
+          <h2><%= challenge.name %></h2>
+          <p><%= challenge.description %></p>
+          <p><%= challenge.reward %></p>
+          <%= link_to "Delete", challenge_path(challenge),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+        </div>
+<!--       </div>
+    </div> -->
+  </div>
 <% end %>
+<%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
 
-<%= link_to "Create a new challenge", new_challenge_path %>
