@@ -1,7 +1,7 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>
+  Hello <%= current_user.first_name %>!</h2>
 
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-
+<h5>Update general information</h5>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -21,12 +21,13 @@
                 autofocus: true %>
 
     <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden, hint: "Max 10mo" %>
+    <%= f.input :photo_cache, as: :hidden, hint: "Max 10mo, select a square picture (for avatar)" %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<!--     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+    <% end %> -->
 
+<h5>Password modification</h5>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -34,6 +35,8 @@
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
+
+<h5>Input your password to confirm your modifications</h5>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
