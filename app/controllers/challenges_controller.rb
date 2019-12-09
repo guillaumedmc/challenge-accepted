@@ -1,6 +1,9 @@
 class ChallengesController < ApplicationController
   def index
     @challenges = Challenge.all
+    # url = 'https://api.giphy.com/v1/gifs/search?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&q=&limit=1&offset=0&rating=G&lang=en'
+    # user_serialized = open(url).read
+    # @gifs = JSON.parse(user_serialized)
   end
 
   def show
@@ -13,8 +16,15 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(challenge_params)
+    @challenge.user_id = current_user.id
+    url = "https://api.giphy.com/v1/gifs/search?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&q=#{@challenge.theme}&limit=1&offset=0&rating=G&lang=en"
+    # url = "https://api.giphy.com/v1/gifs/random?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&tag=&rating=G"
+    user_serialized = open(url).read
+    gifs = JSON.parse(user_serialized)
+    a = gifs['data'].first
+    @challenge.gif = a['images']['downsized_large']['url']
+    # @challenge.gif = gifs['data']['image_url']
     @challenge.save
-
     redirect_to challenges_path
   end
 
@@ -39,6 +49,6 @@ class ChallengesController < ApplicationController
   def challenge_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:challenge).permit(:name, :description, :reward)
+    params.require(:challenge).permit(:name, :description, :reward, :contenders, :completion_date, :theme, :gif)
   end
 end

@@ -6,6 +6,7 @@
 <!--   <div class="row">
     <div class=" col-12 col-lg-4"> -->
       <div class="card-product">
+        <%= image_tag challenge.gif %>
         <div class="card-product-infos">
           <h2><%= challenge.name %></h2>
           <p><%= challenge.description %></p>
@@ -14,9 +15,9 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
         </div>
+        <%= cl_image_tag challenge.user.photo, class: "avatar"%>
 <!--       </div>
     </div> -->
   </div>
 <% end %>
 <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
-

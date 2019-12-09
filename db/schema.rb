@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_202532) do
+ActiveRecord::Schema.define(version: 2019_12_09_221536) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 2019_12_08_202532) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "completion_date"
+    t.integer "user_id"
+    t.string "theme"
+    t.string "gif"
+    t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

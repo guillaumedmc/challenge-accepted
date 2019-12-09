@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
   mount_uploader :photo, PhotoUploader
+
+  has_and_belongs_to_many :challenges
 end
