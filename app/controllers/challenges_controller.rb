@@ -17,13 +17,11 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user_id = current_user.id
-    url = "https://api.giphy.com/v1/gifs/search?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&q=#{@challenge.theme}&limit=1&offset=0&rating=G&lang=en"
-    # url = "https://api.giphy.com/v1/gifs/random?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&tag=&rating=G"
+    url = "https://api.giphy.com/v1/gifs/search?api_key=#{ENV['GIPHY_API_KEY']}&q=#{@challenge.theme}&limit=1&offset=0&rating=G&lang=en"
     user_serialized = open(url).read
     gifs = JSON.parse(user_serialized)
     a = gifs['data'].first
     @challenge.gif = a['images']['downsized_large']['url']
-    # @challenge.gif = gifs['data']['image_url']
     @challenge.save
     redirect_to challenges_path
   end
