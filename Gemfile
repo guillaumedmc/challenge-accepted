@@ -19,7 +19,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form'
 gem 'webpacker', '~> 4.x'
-gem 'devise'
+gem 'devise', ">= 4.7.1"
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'bootstrap-sass'
