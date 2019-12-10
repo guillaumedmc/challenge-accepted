@@ -16,8 +16,14 @@
             data: { confirm: "Are you sure?" } %>
         </div>
         <%= cl_image_tag challenge.user.photo, class: "avatar"%>
-<!--       </div>
-    </div> -->
+        <%= link_to "Add contenders", new_challenge_participant_path(challenge) %>
+        <div class="">
+          <h5>Contenders</h5>
+          <%= binding.pry %>
+            <% challenge.participants.each do |participant| %>
+              <%= cl_image_tag challenge.participant.user.photo, class: "avatar"%>
+            <% end %>
+        </div>
   </div>
 <% end %>
 <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
