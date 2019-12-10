@@ -1,8 +1,8 @@
 class ParticipantsController < ApplicationController
   def new
     # we need @challenge in our `simple_form_for`
-    @challenge = Challenge.find(params[:challenge_id])
     @participant = Participant.new
+    @challenge = Challenge.find(params[:challenge_id])
   end
 
   def create
@@ -10,13 +10,18 @@ class ParticipantsController < ApplicationController
     # we need `challenge_id` to associate participant with corresponding challenge
     @challenge = Challenge.find(params[:challenge_id])
     @participant.challenge = @challenge
+    # binding.pry
     @participant.save
-    redirect_to challenges_path
+    if @participant.save!
+      redirect_to challenges_path, notice: 'Participant was successfully created.'
+    else
+      render :new
+    end
   end
 
   private
 
   def participant_params
-    params.require(:participant).permit(:challenge, :role, :user_id)
+    params.require(:participant).permit(:challenge_id, :role, :user_id)
   end
 end

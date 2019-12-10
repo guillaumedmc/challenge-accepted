@@ -1,16 +1,11 @@
 <h1>Add a new participant</h1>
 
 <%= simple_form_for [@challenge, @participant] do |f| %>
-
-  <%= f.input :user, as: :select, collection: User.all, prompt: 'Select a participant', label_method: :nickname %>
+  <%= f.input :user_id, as: :select, collection: User.all, prompt: 'Select a participant', label_method: :nickname %>
   <%= f.input :role, as: :check_boxes, collection: ["Contender", "Referee"], prompt: 'What is his role ?' %>
 
 
   <%= f.submit "Add a participant", class: "btn btn-primary" %>
 <% end %>
 
-
-
-<!-- <%= render 'form', participant: @participant %>
-
-<%= link_to 'Back', participants_path %>
+<%= link_to 'Back', challenges_path %>

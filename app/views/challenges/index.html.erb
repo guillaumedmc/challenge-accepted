@@ -2,28 +2,31 @@
   Challenges list 🚀
 </h1>
 
-<% @challenges.each do |challenge| %>
-<!--   <div class="row">
-    <div class=" col-12 col-lg-4"> -->
-      <div class="card-product">
-        <%= image_tag challenge.gif %>
-        <div class="card-product-infos">
-          <h2><%= challenge.name %></h2>
-          <p><%= challenge.description %></p>
-          <p><%= challenge.reward %></p>
-          <%= link_to "Delete", challenge_path(challenge),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+<div class="card-container">
+  <% @challenges.each do |challenge| %>
+    <div class="card-base">
+      <div class="container">
+      <h2><%= challenge.name %></h2>
+      <%= image_tag challenge.gif, class: "gif"%>
+      <div class="">
+        <p><%= challenge.description %></p>
+        <p><%= challenge.reward %></p>
+        <%= link_to "Delete", challenge_path(challenge),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      </div>
+      <div class="">
+      <h5>Creator</h5>
+        <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
+      </div>
+      <div class="">
+        <h5>Contenders</h5> <%= link_to "Add contenders", new_challenge_participant_path(challenge) %>
+          <% challenge.participants.each do |participant| %>
+            <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+          <% end %>
         </div>
-        <%= cl_image_tag challenge.user.photo, class: "avatar"%>
-        <%= link_to "Add contenders", new_challenge_participant_path(challenge) %>
-        <div class="">
-          <h5>Contenders</h5>
-          <%= binding.pry %>
-            <% challenge.participants.each do |participant| %>
-              <%= cl_image_tag challenge.participant.user.photo, class: "avatar"%>
-            <% end %>
-        </div>
-  </div>
-<% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
