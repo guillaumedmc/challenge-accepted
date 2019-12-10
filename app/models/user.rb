@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable
   mount_uploader :photo, PhotoUploader
 
-  has_and_belongs_to_many :challenges
+  has_many :challenges
+  has_many :participants
 end
