@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_221536) do
+ActiveRecord::Schema.define(version: 2019_12_10_200542) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_12_09_221536) do
     t.string "theme"
     t.string "gif"
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "challenge_id"
+    t.index ["challenge_id"], name: "index_participants_on_challenge_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
