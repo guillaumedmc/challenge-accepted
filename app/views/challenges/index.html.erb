@@ -1,32 +1,45 @@
-<h1>
-  Challenges list 🚀
-</h1>
+<div class="container">
+  <h1>
+    Challenges list 🚀
+  </h1>
+</div>
 
-<div class="card-container">
-  <% @challenges.each do |challenge| %>
-    <div class="card-base">
-      <div class="container">
-      <h2><%= challenge.name %></h2>
-      <%= image_tag challenge.gif, class: "gif"%>
-      <div class="">
-        <p><%= challenge.description %></p>
-        <p><%= challenge.reward %></p>
-        <%= link_to "Delete", challenge_path(challenge),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-      </div>
-      <div class="">
-      <h5>Creator</h5>
-        <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
-      </div>
-      <div class="">
-        <h5>Contenders</h5> <%= link_to "Add contenders", new_challenge_participant_path(challenge) %>
-          <% challenge.participants.each do |participant| %>
-            <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
-          <% end %>
+  <div class="card-container">
+    <% @challenges.each do |challenge| %>
+      <div class="card-base">
+        <div class="container">
+          <h2><%= challenge.name %></h2>
+          <div class="high-section">
+            <div class="left">
+              <!-- <h3>Proudly created by</h3> -->
+              <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
+              <p><%= challenge.description %></p>
+            </div>
+            <div class="right-gif">
+              <%= image_tag challenge.gif, class: "gif"%>
+            </div>
+          </div>
+        <div class="">
+          <p><%= challenge.reward %></p>
+        </div>
+        <div class="high-section">
+          <div class="high-section">
+            <h3>List of contenders</h3>
+            <%= link_to " (+ add)", new_challenge_participant_path(challenge) %>
+          </div>
+          <div>
+            <% challenge.participants.each do |participant| %>
+              <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+            <% end %>
+          </div>
+          </div>
+            <%= link_to "❌", challenge_path(challenge),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+<div class="container">
+  <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
 </div>
-<%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
