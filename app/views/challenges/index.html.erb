@@ -1,32 +1,29 @@
-<h1>
-  Challenges list 🚀
-</h1>
+<div class="container">
+  <h1>
+    Challenges list 🚀
+  </h1>
+</div>
+<div class="justify-content-center">
+  <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
+</div>
 
-<div class="card-container">
+<div class="row no-gutters justify-content-center">
   <% @challenges.each do |challenge| %>
-    <div class="card-base">
-      <div class="container">
-      <h2><%= challenge.name %></h2>
-      <%= image_tag challenge.gif, class: "gif"%>
-      <div class="">
-        <p><%= challenge.description %></p>
-        <p><%= challenge.reward %></p>
-        <%= link_to "Delete", challenge_path(challenge),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-      </div>
-      <div class="">
-      <h5>Creator</h5>
+  <div class="card card-margin" style="width: 18rem;">
+    <%= image_tag challenge.gif, class: "ard-img-top gif"%>
+    <div class="card-body">
+      <h5 class="card-title"><%= challenge.name %></h5>
+      <p class="card-text"><%= challenge.description %></p>
+      <div class="below">
+        <div class="d-flex flex-column justify-content-center">
         <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
-      </div>
-      <div class="">
-        <h5>Contenders</h5> <%= link_to "Add contenders", new_challenge_participant_path(challenge) %>
-          <% challenge.participants.each do |participant| %>
-            <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
-          <% end %>
+        <!-- <%= challenge.user.nickname %> -->
+        </div>
+        <div>
+          <%= link_to "See details", challenge_path(challenge), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
+  </div>
   <% end %>
 </div>
-<%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>

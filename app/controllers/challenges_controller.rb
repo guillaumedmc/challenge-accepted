@@ -32,12 +32,15 @@ class ChallengesController < ApplicationController
 
   def edit
     @challenge = Challenge.find(params[:id])
-    @challenge.update(challenge_params)
   end
 
   def update
     @challenge = Challenge.find(params[:id])
-    @challenge.update(params[:challenge])
+    if @challenge.update(challenge_params)
+      redirect_to challenge_path(@challenge)
+    else
+      render :edit
+    end
   end
 
   def destroy

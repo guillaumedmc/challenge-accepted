@@ -17,3 +17,12 @@
 //= require rails-ujs
 //= require moment
 //= require moment/fr.js
+
+
+$(function() {
+  $("#body-field").on("keyup", function(){
+    var length = $(this).val().length;
+
+    $("#body-count").html(length);
+  });
+});

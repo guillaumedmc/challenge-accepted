@@ -1,2 +1,40 @@
-<h1>Challenge</h1>
+<div class="container">
+  <h1><%= @challenge.name%></h1>
 
+<%= link_to "See all challenges", challenges_path %>
+
+  <h3>Creator</h3>
+  <%= cl_image_tag @challenge.user.photo, class: 'avatar', title: @challenge.user.first_name %>
+
+  <h3>Description</h3>
+  <p><%= @challenge.description %></p>
+
+  <h3>Reward</h3>
+  <p><%= @challenge.reward %></p>
+
+
+  <%= link_to "Add a participant", new_challenge_participant_path(@challenge) %>
+
+  <h3>Contenders</h3>
+  <% @challenge.participants.each do |participant| %>
+    <p><%= participant.user.nickname %></p>
+  <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+  <% end %>
+
+    <h3>Referees</h3>
+  <% @challenge.participants.each do |participant| %>
+    <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+    <p><%= participant.user.nickname %></p>
+  <% end %>
+
+
+  </div>
+    <%= link_to "Delete this challenge", challenge_path(@challenge), class: 'btn btn-gradient',
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+  </div>
+  </div>
+    <%= link_to "Edit this challenge", edit_challenge_path(@challenge), class: 'btn btn-gradient' %>
+  </div>
+
+</div>

@@ -1,7 +1,20 @@
 <div class="container">
   <h1>
-    Welcome to the challenge
-    <br>
-   <%= link_to "See all challenges", challenges_path %>
+    Welcome to the Pec Challenge
   </h1>
+
+  <div class="jumbotron">
+    <div class="display-4">
+      <h2>Read carfully the rules below before starting:</h2>
+      <h5>#1 Do not talk about Pec Challenge</h5>
+      <h5>#2 Complete your profile</h5>
+      <h5>#3 Create your challenge</h5>
+      <h5>#4 Accept the challenges assigned to you and suffer your fate</h5>
+    </div>
+    <div class="space-margin">
+      <h3>
+         <%= link_to ">>> Get in the game <<<", challenges_path, class: "btn btn-primary btn-lg btn-block" %>
+      </h3>
+    </div>
+  </div>
 </div>
