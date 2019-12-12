@@ -57,10 +57,7 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
-    bootstrap-tooltip-rails (0.1)
-      rails (>= 3.1)
-      thor
-    bootstrap3-datetimepicker-rails (4.17.47)
+    bootstrap3-datetimepicker-rails (4.0.0)
       momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (11.0.1)
@@ -92,6 +89,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    datetime_picker_input (4.0.0)
+      bootstrap3-datetimepicker-rails (~> 4.0.0)
+      momentjs-rails (>= 2.9.0)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -283,14 +283,13 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.1.0)
   bootstrap-sass
-  bootstrap-tooltip-rails
-  bootstrap3-datetimepicker-rails (~> 4.17.47)
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.2)
   chromedriver-helper
   cloudinary (~> 1.9.1)
   coffee-rails (~> 4.2)
+  datetime_picker_input
   devise
   dotenv-rails
   font-awesome-sass (~> 5.6.1)

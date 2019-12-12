@@ -1,45 +1,27 @@
-<div class="container">
-  <h1>
-    Challenges list 🚀
-  </h1>
+<div class="justify-content-center">
+<h1>
+  Challenges list 🚀
+</h1>
 </div>
 
-  <div class="card-container">
-    <% @challenges.each do |challenge| %>
-      <div class="card-base">
-        <div class="container">
-          <h2><%= challenge.name %></h2>
-          <div class="high-section">
-            <div class="left">
-              <!-- <h3>Proudly created by</h3> -->
-              <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
-              <p><%= challenge.description %></p>
-            </div>
-            <div class="right-gif">
-              <%= image_tag challenge.gif, class: "gif"%>
-            </div>
-          </div>
-        <div class="">
-          <p><%= challenge.reward %></p>
+<div class="row no-gutters justify-content-center">
+  <% @challenges.each do |challenge| %>
+  <div class="card card-margin" style="width: 18rem;">
+    <%= image_tag challenge.gif, class: "ard-img-top gif"%>
+    <div class="card-body">
+      <h5 class="card-title"><%= challenge.name %></h5>
+      <p class="card-text"><%= challenge.description %></p>
+      <div class="below">
+        <div class="d-flex flex-column justify-content-center">
+        <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
+        <!-- <%= challenge.user.nickname %> -->
         </div>
-        <div class="high-section">
-          <div class="high-section">
-            <h3>List of contenders</h3>
-            <%= link_to " (+ add)", new_challenge_participant_path(challenge) %>
-          </div>
-          <div>
-            <% challenge.participants.each do |participant| %>
-              <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
-            <% end %>
-          </div>
-          </div>
-            <%= link_to "❌", challenge_path(challenge),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-        </div>
+        <%= link_to "See details", challenge_path(challenge), class: 'btn btn-primary' %>
       </div>
-    <% end %>
+    </div>
   </div>
-<div class="container">
+  <% end %>
+</div>
+<div class="justify-content-center">
   <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
 </div>
