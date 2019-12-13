@@ -1,0 +1,4 @@
+<%= simple_form_for([ challenge, comment ]) do |form| %>
+  <%= form.input :content, as: :text, class: 'form-control' %>
+  <%= form.button :submit, class: "btn btn-gradient"%>
+<% end %>

@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   has_many :challenges
   has_many :participants
+  has_many :comments
 end

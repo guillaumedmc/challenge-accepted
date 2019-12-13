@@ -8,6 +8,7 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -37,7 +38,7 @@ class ChallengesController < ApplicationController
   def update
     @challenge = Challenge.find(params[:id])
     if @challenge.update(challenge_params)
-      redirect_to challenge_path(@challenge)
+      redirect_to challenge_path(@challenge), notice: 'Challenge was successfully edited.'
     else
       render :edit
     end
@@ -46,7 +47,7 @@ class ChallengesController < ApplicationController
   def destroy
     @challenge = Challenge.find(params[:id])
     @challenge.destroy
-    redirect_to challenges_path
+    redirect_to challenges_path, notice: 'Challenge was successfully deleted.'
   end
 
   private
