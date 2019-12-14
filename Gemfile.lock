@@ -33,6 +33,8 @@ GEM
       activemodel (= 5.2.4)
       activesupport (= 5.2.4)
       arel (>= 9.0)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activestorage (5.2.4)
       actionpack (= 5.2.4)
       activerecord (= 5.2.4)
@@ -276,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgresql-adapter
   autoprefixer-rails
   bootsnap (>= 1.1.0)
   bootstrap-sass
