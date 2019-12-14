@@ -15,14 +15,23 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-<!--     <%= render 'shared/flashes' %> -->
       <%= yield %>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<% if notice %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= alert %>
+  </div>
+<% end %>
 
-    <footer class="footer">
+<!--     <footer class="footer">
       <div class="container">
           <div class="row">
               <div class="col-md-12">
@@ -30,7 +39,7 @@
               </div>
           </div>
       </div>
-    </footer>
+    </footer> -->
 
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->

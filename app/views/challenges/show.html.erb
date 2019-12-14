@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @challenge.name%></h1>
 
-<%= link_to "See all challenges", challenges_path %>
+  <%= link_to "See all challenges", challenges_path %>
 
   <h3>Creator</h3>
   <%= cl_image_tag @challenge.user.photo, class: 'avatar', title: @challenge.user.first_name %>
@@ -28,13 +28,26 @@
   <% end %>
 
 
-  </div>
     <%= link_to "Delete this challenge", challenge_path(@challenge), class: 'btn btn-gradient',
     method: :delete,
     data: { confirm: "Are you sure?" } %>
-  </div>
-  </div>
     <%= link_to "Edit this challenge", edit_challenge_path(@challenge), class: 'btn btn-gradient' %>
+
+  <h2>
+    <%= pluralize @challenge.comments.size, "comments" %>
+  </h2>
+
+  <div id="comments">
+    <% if @challenge.comments.blank? %>
+      Be the first to leave a review for <%= @challenge.name %>
+    <% else %>
+      <% @challenge.comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+      <% end %>
+    <% end %>
   </div>
+
+<%= render 'comments/form', challenge: @challenge, comment: @comment %>
+<%= cl_image_tag current_user.photo, class: 'avatar', title: current_user.first_name %>
 
 </div>

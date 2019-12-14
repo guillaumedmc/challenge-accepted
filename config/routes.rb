@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :challenges do
     resources :participants, only: [ :new, :create, :show, :index ]
   end
+
+  resources :challenges, only: [ :index, :show ] do
+    resources :comments, only: :create
+  end
 end
