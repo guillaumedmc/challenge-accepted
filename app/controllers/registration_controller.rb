@@ -6,5 +6,3 @@ class RegistrationsController < Devise::RegistrationsController
       user_path(resource)
     end
 end
-
-end
