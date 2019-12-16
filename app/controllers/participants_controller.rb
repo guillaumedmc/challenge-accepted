@@ -13,7 +13,7 @@ class ParticipantsController < ApplicationController
     # binding.pry
     @participant.save
     if @participant.save!
-      redirect_to challenges_path, notice: 'Participant was successfully created.'
+      redirect_to challenge_path(@challenge), notice: 'Participant was successfully created.'
     else
       render :new
     end

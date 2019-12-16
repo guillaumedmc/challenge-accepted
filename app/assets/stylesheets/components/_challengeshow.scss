@@ -1,0 +1,34 @@
+
+.head {
+  display: flex;
+}
+
+.gif-lg {
+  width: 40vw;
+  height: 30vh;
+}
+
+.modify {
+  flex-direction: column;
+}
+
+.corp {
+  display: flex;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  background-color: white;
+}
+
+.top-desc p{
+  font-size: 0.8em;
+  font-weight: lighter;
+  // font-style: italic;
+}
+
+.corp-desc {
+  width: 45%;
+}
+
+.corp-participants {
+  width: 45%;
+}

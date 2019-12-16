@@ -13,7 +13,7 @@
     <%= image_tag challenge.gif, class: "ard-img-top gif"%>
     <div class="card-body">
       <h5 class="card-title"><%= challenge.name %></h5>
-      <p class="card-text"><%= challenge.description %></p>
+      <p class="card-text"><%= challenge.description.truncate(60) %></p>
       <div class="below">
         <div class="d-flex flex-column justify-content-center">
         <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
