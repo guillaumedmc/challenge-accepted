@@ -1,43 +1,69 @@
 <div class="container">
-  <h1><%= @challenge.name%></h1>
-
-  <%= link_to "See all challenges", challenges_path %>
-
-  <h3>Creator</h3>
-  <%= cl_image_tag @challenge.user.photo, class: 'avatar', title: @challenge.user.first_name %>
-
-  <h3>Description</h3>
-  <p><%= @challenge.description %></p>
-
-  <h3>Reward</h3>
-  <p><%= @challenge.reward %></p>
-
-
-  <%= link_to "Add a participant", new_challenge_participant_path(@challenge) %>
-
-  <h3>Contenders</h3>
-  <% @challenge.participants.each do |participant| %>
-    <p><%= participant.user.nickname %></p>
-  <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
-  <% end %>
-
-    <h3>Referees</h3>
-  <% @challenge.participants.each do |participant| %>
-    <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
-    <p><%= participant.user.nickname %></p>
-  <% end %>
-
-
-    <%= link_to "Delete this challenge", challenge_path(@challenge), class: 'btn btn-gradient',
+  <div class="head justify-content-around">
+    <%= link_to "< See all challenges", challenges_path %>
+    <%= image_tag @challenge.gif, class: "gif-lg"%>
+    <div class="modify">
+      <%= link_to "Edit", challenge_path(@challenge),
     method: :delete,
-    data: { confirm: "Are you sure?" } %>
-    <%= link_to "Edit this challenge", edit_challenge_path(@challenge), class: 'btn btn-gradient' %>
+    data: { confirm: "Are you sure?" } %> /
+    <%= link_to "Delete", edit_challenge_path(@challenge) %>
+    </div>
+  </div>
+
+  <h1><%= @challenge.name %></h1>
+  <div class="corp justify-content-between flex-sm-wrap">
+    <div class="corp-desc">
+      <div class="d-flex justify-content-between top-desc">
+        <div>
+          <p>Created on <i><%= @challenge.created_at.strftime("%A %d %B %Y at %Hh%M") %></i></p>
+        </div>
+        <div>
+          <%= cl_image_tag @challenge.user.photo, class: 'avatar', title: @challenge.user.first_name %>
+          <p><%= @challenge.user.nickname %></p>
+        </div>
+      </div>
+      <div>
+        <h5>Description</h5>
+        <%= @challenge.description %>
+        <h5>Reward</h5>
+        <%= @challenge.reward %>
+        <%= @challenge.completion_date %>
+      </div>
+    </div>
+
+    <div class="corp-participants">
+      <h5>List of participants</h5>
+      <% if @challenge.participants.empty? %>
+        <p>No one here, Be the first participant!</p>
+      <% else %>
+        <h6>Contenders</h6>
+        <% @challenge.participants.each do |participant| %>
+          <% if participant.role == "Contender" %>
+            <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+            <p><%= participant.user.nickname %></p>
+          <% else %>
+            <p>No contender yet 🙁</p>
+          <% end %>
+        <% end %>
+        <h6>Referees</h6>
+        <% @challenge.participants.each do |participant| %>
+          <% if participant.role == "Referee" %>
+            <%= cl_image_tag participant.user.photo, class: 'avatar', title: participant.user.first_name %>
+            <p><%= participant.user.nickname %></p>
+          <% else %>
+            <p>No referee yet 🙁</p>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= link_to "Add a participant", new_challenge_participant_path(@challenge) %>
+    </div>
+  </div>
 
   <h2>
     <%= pluralize @challenge.comments.size, "comments" %>
   </h2>
 
-  <div id="comments">
+  <div class="comments">
     <% if @challenge.comments.blank? %>
       Be the first to leave a review for <%= @challenge.name %>
     <% else %>
@@ -46,8 +72,7 @@
       <% end %>
     <% end %>
   </div>
-
-<%= render 'comments/form', challenge: @challenge, comment: @comment %>
-<%= cl_image_tag current_user.photo, class: 'avatar', title: current_user.first_name %>
-
+    <%= render 'comments/form', challenge: @challenge, comment: @comment %>
+    <%= cl_image_tag current_user.photo, class: 'avatar', title: current_user.first_name %>
+  </div>
 </div>

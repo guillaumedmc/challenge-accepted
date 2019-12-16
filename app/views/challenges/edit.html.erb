@@ -6,23 +6,23 @@
    <%= simple_form_for(@challenge) do |f| %>
 
     <div class="form-group">
-      <%= f.input :name, class: 'form-control', placeholder: "Challenge name", required: true, maxlength: 25 %>
+      <%= f.input :name, class: 'form-control', hint: "Title of your challenge", required: true, maxlength: 25 %>
     </div>
 
     <div class="form-group">
-      <%= f.input :description, placeholder: "Challenge description", class: 'form-control', required: true, id: "body-field" %>
+      <%= f.input :description, hint: "Be as precise as possible", class: 'form-control', required: true, id: "body-field" %>
     </div>
 
     <div class="form-group">
-      <%= f.input :completion_date, class: 'form-control',  placeholder: "DD/MM/YYYY" %>
+      <%= f.input :completion_date, class: 'form-control', hint: "Date when your challenge will be completed" %>
     </div>
 
     <div class="form-group">
-      <%= f.input :theme, as: :string, hint: '1 or 2 words to describe your challenge', class: 'form-control', required: true %>
+      <%= f.input :theme, as: :string, class: 'form-control', hint: "1 or 2 words to describe your challenge", required: true %>
     </div>
 
     <div class="form-group">
-      <%= f.input :reward, as: :string, class: 'form-control', required: true %>
+      <%= f.input :reward, as: :string, class: 'form-control', hint: "What are we gonna win or loose ? Money, fame, glory, death ...", required: true %>
     </div>
 
     <%= f.button :submit, class: 'btn btn-gradient' %>
