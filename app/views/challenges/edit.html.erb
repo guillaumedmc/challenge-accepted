@@ -1,7 +1,7 @@
 <div class="container">
+  <%= link_to "Back to all challenges", challenge_path(@challenge), class: "btn btn-outline-secondary margin-top-10" %>
   <h1>Edit <%= @challenge.name %></h1>
 
-  <%= link_to "Back to all challenges", challenge_path(@challenge) %>
 
    <%= simple_form_for(@challenge) do |f| %>
 
