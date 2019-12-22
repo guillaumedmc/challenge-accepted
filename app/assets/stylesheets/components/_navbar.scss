@@ -14,3 +14,10 @@
 .logo {
   height: 60px
 }
+
+@media (max-width: 770px) {
+  .dropdown-toggle {
+    position: relative;
+    left: 136px;
+  }
+}
