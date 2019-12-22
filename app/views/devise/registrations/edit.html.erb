@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "Back", :back, class: 'btn btn-outline-secondary margin-top-10' %>
   <h2>
     Hello <%= current_user.first_name %>!</h2>
 
@@ -45,9 +46,8 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: 'btn btn-gradient'%>
+      <%= f.button :submit, "Update", class: 'btn btn-primary'%>
     </div>
   <% end %>
 
-  <%= link_to "Back", :back %>
 </div>

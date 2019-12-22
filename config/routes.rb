@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :challenges, only: [ :index, :show ] do
     resources :comments, only: :create
   end
+  resources :comments, only: [:destroy, :index ]
 end

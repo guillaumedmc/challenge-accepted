@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>Create a new challenge</h1>
+  <%= link_to "Back to all challenges", challenges_path, class: "btn btn-outline-secondary margin-top-10" %>
 
-  <%= link_to "Back to all challenges", challenges_path %>
+  <h1>Create a new challenge</h1>
 
   <%= simple_form_for(@challenge) do |f| %>
 
     <div class="form-group">
-      <%= f.input :name, class: 'form-control', hint: "Title of your challenge", required: true, maxlength: 25 %>
+      <%= f.input :name, class: 'form-control', label: 'Challenge name', required: true, maxlength: 25 %>
     </div>
 
     <div class="form-group">
@@ -25,7 +25,7 @@
       <%= f.input :reward, hint: "What are we gonna win or loose ? Money, fame, glory, death ...", class: 'form-control', required: true %>
     </div>
 
-    <%= f.button :submit, class: 'btn btn-gradient' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
 

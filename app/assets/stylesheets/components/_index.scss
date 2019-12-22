@@ -27,12 +27,18 @@
   margin-top: 50px;
 }
 
+.display-4 p {
+  font-size: initial;
+}
+
 .display-4 h5 {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .container h1 {
   text-align: center;
+  margin-top: 20px;
 }
 
 html {
@@ -48,4 +54,9 @@ html {
     background: rgba(153, 153, 153, 0.8);
     color: #FFFFFF;
     text-align: center;
+}
+
+.text-align-center  {
+  text-align: center;
+  margin: 3vh 0;
 }

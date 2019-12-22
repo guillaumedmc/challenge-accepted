@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container margin-top-10">
+<%= link_to 'Back to the challenge', challenge_path(@challenge), class: "btn btn-outline-secondary" %>
 <h1>Add a new participant</h1>
 
 <%= simple_form_for [@challenge, @participant] do |f| %>
-  <%= f.input :user_id, as: :select, collection: User.all, prompt: 'Select a participant', label_method: :nickname %>
-  <%= f.input :role, as: :check_boxes, collection: ["Contender", "Referee"], prompt: 'What is his role ?' %>
+  <%= f.input :user_id, as: :select, collection: User.all, prompt: 'Select a participant', label_method: :nickname, required: true %>
+  <%= f.input :role, as: :select, collection: ["Contender", "Referee"], required: true, prompt: 'What is his role ?' %>
 
 
   <%= f.submit "Add a participant", class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to 'Back', challenges_path %>
 </div>
