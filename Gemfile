@@ -27,7 +27,7 @@ gem 'jquery-rails'
 gem 'momentjs-rails', '>= 2.9'
 gem 'geocoder'
 gem 'giphy'
-
+gem 'omniauth-facebook'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
