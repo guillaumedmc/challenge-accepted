@@ -24,7 +24,7 @@ class ChallengesController < ApplicationController
     a = gifs['data'].first
     @challenge.gif = a['images']['downsized_large']['url']
     @challenge.save
-    if @challenge.save!
+    if @challenge.save
       redirect_to challenges_path, notice: 'Challenge was successfully created.'
     else
       render :new

@@ -11,7 +11,7 @@ class ParticipantsController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
     @participant.challenge = @challenge
     @participant.save
-    if @participant.save!
+    if @participant.save
       redirect_to challenge_path(@challenge), notice: 'Participant was successfully created.'
     else
       render :new
