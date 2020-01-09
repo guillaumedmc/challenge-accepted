@@ -10,6 +10,16 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'c8aa1bd34cea4acaf447fda54a4b854edb43674f1650bcf70926913e4e34f79646a8fb655d874efa1c81eb67198fd8b93dc18d7a0bac4d95f67440b55711969b'
 
+  config.omniauth :facebook,
+              ENV["FB_APP_ID"],
+              ENV["FB_APP_SECRET"],
+              scope: 'public_profile, email, user_birthday',
+              secure_image_url: true,
+              image_size: :large,
+              display: 'popup',
+              info_fields: 'name,first_name,last_name,email,birthday,gender',
+              callback_url: "http://localhost:3000/users/auth/facebook/callback"
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
