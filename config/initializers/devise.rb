@@ -17,8 +17,8 @@ Devise.setup do |config|
               secure_image_url: true,
               image_size: :large,
               display: 'popup',
-              info_fields: 'name,first_name,last_name,email,birthday,gender',
-              callback_url: "http://localhost:3000/users/auth/facebook/callback"
+              info_fields: 'name,first_name,last_name,email,birthday,gender'
+              # callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
