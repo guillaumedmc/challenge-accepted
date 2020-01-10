@@ -16,7 +16,6 @@ Devise.setup do |config|
               scope: 'public_profile, email',
               secure_image_url: true,
               image_size: :large,
-              display: 'popup',
               info_fields: 'name,first_name,last_name,email,birthday,gender'
               # callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
