@@ -16,8 +16,11 @@
       <p class="card-text"><%= challenge.description.truncate(60) %></p>
       <div class="below">
         <div class="d-flex flex-column justify-content-center">
-        <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
-        <!-- <%= challenge.user.nickname %> -->
+         <% if challenge.user.photo.blank? %>
+            <%= cl_image_tag challenge.user.image, class: 'avatar', title: challenge.user.first_name  %>
+          <% else %>
+            <%= cl_image_tag challenge.user.photo, class: 'avatar', title: challenge.user.first_name %>
+          <% end %>
         </div>
         <div>
           <%= link_to "See details", challenge_path(challenge), class: 'btn btn-primary' %>
