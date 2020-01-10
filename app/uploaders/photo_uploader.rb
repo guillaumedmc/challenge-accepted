@@ -13,5 +13,8 @@ process eager: true  # Force version generation at upload time.
     cloudinary_transformation effect: "brightness:30", radius: 20,
       width: 150, height: 150, crop: :thumb, gravity: :face
   end
-  # Remove everything else
+
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
 end

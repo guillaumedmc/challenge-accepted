@@ -23,7 +23,11 @@
         </div>
         <div class="avtext">
           <i><p>Created by</p></i>
-          <%= cl_image_tag @challenge.user.photo, class: 'avatar-md', title: @challenge.user.first_name %>
+            <% if @challenge.user.photo.blank? %>
+              <%= cl_image_tag @challenge.user.image, class: 'avatar-md', title: @challenge.user.first_name  %>
+            <% else %>
+              <%= cl_image_tag @challenge.user.photo, class: 'avatar-md', title: @challenge.user.first_name %>
+            <% end %>
           <p><%= @challenge.user.nickname %></p>
         </div>
       </div>
@@ -50,7 +54,11 @@
           <% @challenge.participants.each do |participant| %>
             <% if participant.role == "Contender" %>
               <div class="avtext">
-                <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
+                <% if participant.user.photo.blank? %>
+                  <%= cl_image_tag participant.user.image, class: 'avatar-md', title: participant.user.first_name  %>
+                <% else %>
+                  <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
+                <% end %>
                 <p><%= participant.user.nickname %></p>
               </div>
             <% else %>
@@ -62,7 +70,11 @@
         <% @challenge.participants.each do |participant| %>
           <% if participant.role == "Referee" %>
             <div class="avtext">
-              <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
+              <% if participant.user.photo.blank? %>
+                <%= cl_image_tag participant.user.image, class: 'avatar-md', title: participant.user.first_name  %>
+              <% else %>
+                <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
+              <% end %>
               <p><%= participant.user.nickname %></p>
             </div>
           <% else %>
