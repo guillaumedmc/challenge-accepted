@@ -13,7 +13,7 @@ Devise.setup do |config|
   config.omniauth :facebook,
               ENV["FB_APP_ID"],
               ENV["FB_APP_SECRET"],
-              scope: 'public_profile, email, user_birthday',
+              scope: 'public_profile, email',
               secure_image_url: true,
               image_size: :large,
               display: 'popup',
