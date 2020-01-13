@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :participants
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   # get 'challenge_list', to: 'pages#challenge_list', as: :challenge_list
   get "/pages/:page" => "pages#show"
   # get 'pages/list_of_challenges'
