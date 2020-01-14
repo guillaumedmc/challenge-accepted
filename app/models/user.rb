@@ -6,9 +6,9 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :challenges
-  has_many :participants
-  has_many :comments
+  has_many :challenges, dependent: :destroy
+  has_many :participants, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|
