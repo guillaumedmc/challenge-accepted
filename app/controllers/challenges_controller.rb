@@ -50,6 +50,17 @@ class ChallengesController < ApplicationController
     redirect_to challenges_path, notice: 'Challenge was successfully deleted.'
   end
 
+  def displaygif
+    url = "https://api.giphy.com/v1/gifs/search?api_key=#{ENV['GIPHY_API_KEY']}&q=funny&limit=3&offset=0&rating=G&lang=en"
+    user_serialized = open(url).read
+    gifs = JSON.parse(user_serialized)
+    # a = gifs['data']['images']['downsized_large']['url']
+    # binding.pry
+    gifs
+  end
+
+  helper_method :displaygif
+
   private
 
   def challenge_params
