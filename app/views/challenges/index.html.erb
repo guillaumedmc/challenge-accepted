@@ -7,6 +7,15 @@
   <%= link_to "Create a new challenge", new_challenge_path , class: "btn btn-gradient" %>
 </div>
 
+<%= form_tag challenges_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a challenge"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div class="row no-gutters justify-content-center">
   <% @challenges.each do |challenge| %>
   <div class="card card-margin" style="width: 18rem;">

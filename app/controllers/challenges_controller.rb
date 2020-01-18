@@ -1,9 +1,10 @@
 class ChallengesController < ApplicationController
   def index
-    @challenges = Challenge.all
-    # url = 'https://api.giphy.com/v1/gifs/search?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&q=&limit=1&offset=0&rating=G&lang=en'
-    # user_serialized = open(url).read
-    # @gifs = JSON.parse(user_serialized)
+    if params[:query].present?
+      @challenges = Challenge.where(name: params[:query])
+    else
+      @challenges = Challenge.all
+    end
   end
 
   def show
