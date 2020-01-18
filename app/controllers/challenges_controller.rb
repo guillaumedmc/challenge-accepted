@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
   def index
     if params[:query].present?
-      @challenges = Challenge.where("name ILIKE ?", "%#{params[:query]}%")
+      @challenges = Challenge.where(name: params[:query])
     else
       @challenges = Challenge.all
     end
