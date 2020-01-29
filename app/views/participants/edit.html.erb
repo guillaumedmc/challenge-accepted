@@ -1,6 +1,18 @@
-<h1>Editing Participant</h1>
+<div class="container">
+  <h5>Enter result</h5>
 
-<%= render 'form', participant: @participant %>
+  <%= simple_form_for(@challenge.participants) do |f| %>
+    <% @challenge.participants.each do |participant| %>
+      <p><%= participant.user.nickname %></p>
+      <div class="form-group">
+        <%= f.input :rank, class: 'form-control', label: 'Rank', required: true, :collection => %w[1 2 3 4 5 6 ]  %>
+      </div>
 
-<%= link_to 'Show', @participant %> |
-<%= link_to 'Back', participants_path %>
+    <% end %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+
+</div>
+
+
+</div>

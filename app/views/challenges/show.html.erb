@@ -45,6 +45,10 @@
       <div class="d-flex justify-content-between flex-wrap">
         <h5>Participants</h5>
         <%= link_to "Add a participant", new_challenge_participant_path(@challenge), class: 'btn btn-primary' %>
+        <% if current_user.role = "admin" %>
+         <%= link_to "Register result", edit_challenge_participant_path(@challenge), class: 'btn btn-success' %>
+         <% else %>
+         <% end %>
       </div>
       <% if @challenge.participants.empty? %>
         <p>No one here, Be the first participant!</p>
@@ -65,7 +69,7 @@
             <% end %>
           <% end %>
         </div>
-        <h6>👮‍♂️ Referees</h6>
+<!--         <h6>👮‍♂️ Referees</h6>
         <div class="d-flex flex-wrap">
         <% @challenge.participants.each do |participant| %>
           <% if participant.role == "Referee" %>
@@ -80,7 +84,7 @@
           <% else %>
           <% end %>
         <% end %>
-        </div>
+        </div> -->
       <% end %>
     </div>
   </div>
