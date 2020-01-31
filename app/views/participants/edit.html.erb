@@ -1,14 +1,12 @@
 <div class="container">
   <h5>Enter result</h5>
 
-  <%= simple_form_for(@challenge.participants) do |f| %>
-    <% @challenge.participants.each do |participant| %>
-      <p><%= participant.user.nickname %></p>
+    <p><%= @participant.user.nickname %></p>
+    <%= simple_form_for(@participant) do |f| %>
       <div class="form-group">
         <%= f.input :rank, class: 'form-control', label: 'Rank', required: true, :collection => %w[1 2 3 4 5 6 ]  %>
       </div>
 
-    <% end %>
       <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 

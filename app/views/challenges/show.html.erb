@@ -45,10 +45,6 @@
       <div class="d-flex justify-content-between flex-wrap">
         <h5>Participants</h5>
         <%= link_to "Add a participant", new_challenge_participant_path(@challenge), class: 'btn btn-primary' %>
-        <% if current_user.role = "admin" %>
-         <%= link_to "Register result", edit_challenge_participant_path(@challenge), class: 'btn btn-success' %>
-         <% else %>
-         <% end %>
       </div>
       <% if @challenge.participants.empty? %>
         <p>No one here, Be the first participant!</p>
@@ -63,7 +59,13 @@
                 <% else %>
                   <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
                 <% end %>
-                <p><%= participant.user.nickname %></p>
+                <% if current_user.role = "admin" %>
+                  <%= link_to edit_challenge_participant_path(participant.challenge, participant) do %>
+                    <p><%= participant.user.nickname %></p>
+                  <% end %>
+                <% else %>
+                  <p><%= participant.user.nickname %></p>
+                <% end %>
               </div>
             <% else %>
             <% end %>

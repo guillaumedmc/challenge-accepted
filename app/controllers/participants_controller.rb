@@ -21,7 +21,7 @@ class ParticipantsController < ApplicationController
 
   def edit
     @challenge = Challenge.find(params[:challenge_id])
-    # @participant = Participant.find(params[:id])
+    @participant = Participant.find(params[:id])
   end
 
   def update
@@ -29,13 +29,13 @@ class ParticipantsController < ApplicationController
     if @participant.update(participant_params)
       redirect_to challenge_path(@participant.challenge), notice: 'Result was registered'
     else
-      render :edit
+      render :edit, notice: 'Result was NOT registered'
     end
   end
 
   private
 
   def participant_params
-    params.require(:participant).permit(:challenge_id, :role, :user_id)
+    params.require(:participant).permit(:challenge_id, :role, :user_id, :rank)
   end
 end
