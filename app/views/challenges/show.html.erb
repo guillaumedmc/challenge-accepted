@@ -60,9 +60,9 @@
                   <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
                 <% end %>
                 <% if current_user.role = "admin" %>
-                  <%= link_to edit_challenge_participant_path(participant.challenge, participant) do %>
+<!--                   <%= link_to edit_challenge_participant_path(participant.challenge, participant) do %> -->
                     <p><%= participant.user.nickname %></p>
-                  <% end %>
+                  <!-- <% end %> -->
                 <% else %>
                   <p><%= participant.user.nickname %></p>
                 <% end %>
