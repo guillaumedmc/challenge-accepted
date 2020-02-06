@@ -1,9 +1,10 @@
 class ChallengesController < ApplicationController
   def index
-    @challenges = Challenge.all
-    # url = 'https://api.giphy.com/v1/gifs/search?api_key=8xQ5whwj1WCoCkthpbusr9eAJ4SM89Es&q=&limit=1&offset=0&rating=G&lang=en'
-    # user_serialized = open(url).read
-    # @gifs = JSON.parse(user_serialized)
+    if params[:query].present?
+      @challenges = Challenge.where(name: params[:query])
+    else
+      @challenges = Challenge.all
+    end
   end
 
   def show
@@ -49,6 +50,17 @@ class ChallengesController < ApplicationController
     @challenge.destroy
     redirect_to challenges_path, notice: 'Challenge was successfully deleted.'
   end
+
+  def displaygif
+    url = "https://api.giphy.com/v1/gifs/search?api_key=#{ENV['GIPHY_API_KEY']}&q=funny&limit=3&offset=0&rating=G&lang=en"
+    user_serialized = open(url).read
+    gifs = JSON.parse(user_serialized)
+    # a = gifs['data']['images']['downsized_large']['url']
+    # binding.pry
+    gifs
+  end
+
+  helper_method :displaygif
 
   private
 
