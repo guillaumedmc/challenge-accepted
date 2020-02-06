@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :challenges, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :comments, dependent: :destroy
+  after_initialize :init
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -28,4 +29,9 @@ class User < ApplicationRecord
       user.image = auth.info.image
     end
   end
+
+  def init
+    self.score  ||= 0.0
+  end
+
 end

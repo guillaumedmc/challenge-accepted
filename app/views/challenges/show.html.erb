@@ -59,13 +59,19 @@
                 <% else %>
                   <%= cl_image_tag participant.user.photo, class: 'avatar-md', title: participant.user.first_name %>
                 <% end %>
-                <p><%= participant.user.nickname %></p>
+                <% if current_user.role = "admin" %>
+                  <%= link_to edit_challenge_participant_path(participant.challenge, participant) do %>
+                    <p><%= participant.user.nickname %></p>
+                  <% end %>
+                <% else %>
+                  <p><%= participant.user.nickname %></p>
+                <% end %>
               </div>
             <% else %>
             <% end %>
           <% end %>
         </div>
-        <h6>👮‍♂️ Referees</h6>
+<!--         <h6>👮‍♂️ Referees</h6>
         <div class="d-flex flex-wrap">
         <% @challenge.participants.each do |participant| %>
           <% if participant.role == "Referee" %>
@@ -80,7 +86,7 @@
           <% else %>
           <% end %>
         <% end %>
-        </div>
+        </div> -->
       <% end %>
     </div>
   </div>

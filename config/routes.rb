@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rankings
   resources :participants
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   # get 'challenge_list', to: 'pages#challenge_list', as: :challenge_list
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
   resources :challenges do
-    resources :participants, only: [ :new, :create, :show, :index ]
+    resources :participants, only: [ :new, :create, :show, :index, :edit ]
   end
 
   resources :challenges, only: [ :index, :show ] do

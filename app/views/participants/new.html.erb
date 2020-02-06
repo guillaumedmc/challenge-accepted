@@ -4,7 +4,7 @@
 
 <%= simple_form_for [@challenge, @participant] do |f| %>
   <%= f.input :user_id, as: :select, collection: User.all, prompt: 'Select a participant', label_method: :nickname, required: true %>
-  <%= f.input :role, as: :select, collection: ["Contender", "Referee"], required: true, prompt: 'What is his role ?' %>
+<!--   <%= f.input :role, as: :select, collection: ["Contender", "Referee"], required: true, prompt: 'What is his role ?' %> -->
 
 
   <%= f.submit "Add a participant", class: "btn btn-primary" %>

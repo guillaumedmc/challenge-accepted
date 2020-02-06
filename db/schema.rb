@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_223528) do
+ActiveRecord::Schema.define(version: 2020_01_31_205206) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_12_27_223528) do
     t.integer "user_id"
     t.string "theme"
     t.string "gif"
+    t.integer "gif_id"
+    t.index ["gif_id"], name: "index_challenges_on_gif_id"
     t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
@@ -35,14 +37,30 @@ ActiveRecord::Schema.define(version: 2019_12_27_223528) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "gifs", force: :cascade do |t|
+    t.text "name"
+    t.text "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "participants", force: :cascade do |t|
     t.integer "user_id"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "challenge_id"
+    t.integer "rank"
     t.index ["challenge_id"], name: "index_participants_on_challenge_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "rankings", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rankings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +79,8 @@ ActiveRecord::Schema.define(version: 2019_12_27_223528) do
     t.string "uid"
     t.string "name"
     t.text "image"
+    t.text "role"
+    t.float "score"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

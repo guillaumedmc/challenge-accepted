@@ -60,3 +60,19 @@ html {
   text-align: center;
   margin: 3vh 0;
 }
+
+.countdown {
+  border-width:  1px;
+  // border-color: red !important;
+  text-align: center;
+  border: solid;
+  font-size: 2rem;
+  color: white !important;
+  background-color: black;
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+.countdown h5 {
+  font-weight: bold;
+}
