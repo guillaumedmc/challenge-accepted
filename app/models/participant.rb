@@ -19,7 +19,7 @@ class Participant < ApplicationRecord
     else
       if self.user.score.nil?
         self.user.score = 0
-        self.user.score = self.user.score + (6 - self.rank)*2
+        self.user.score = (6 - self.rank)*2
         user.save!
       else
         self.user.score = self.user.score + (6 - self.rank)*2
